@@ -1,0 +1,39 @@
+<div class="container">
+<div class="col-sm-8">
+<h2>Employee List</h2>
+<table class="table">
+<thead>
+<tr>	
+<th>S.No</th>
+  <th>ID</th>
+  <th>Name</th>
+      </tr>
+</thead>
+<tbody>
+
+<tr ng-repeat="employee in employees">    
+		<td>{{$index+1}}</td>
+        <td>{{employee.id}}</td>
+        <td>{{employee.userName}}</td>
+        <td><button  ng-click="remove($index)">Delete</button>
+        <button ng-disabled="checkUser(employee.role)" ng-click="updateEmployee($index)" >Edit</button></td>
+      </tr>
+</tbody>
+
+</table>
+<button ng-click="ShowHide()">Add</button>
+</div>
+<div class="col-sm-4" ng-hide = "IsHidden">
+<h2>Create Employee</h2>
+<form >
+       <input type="text" placeholder="First Name" name="userName" ng-model="uservo.userName" required="required"><br><br>
+       <!--<input type="text" placeholder="Role" name="role" ng-model="uservo.role"><br><br>-->
+       <select placeholder="Role" name="role" ng-model="uservo.role" ng-options="x for x in names"></select><br><br>
+       
+        <input type="text" placeholder="Email" name="email" ng-model="uservo.email"><br><br>
+         <input type="password" placeholder="Password" name="password" ng-model="uservo.password"><br><br>
+       <button  ng-click="save(uservo)" >Create</button>
+       </form>
+
+</div>
+</div>
